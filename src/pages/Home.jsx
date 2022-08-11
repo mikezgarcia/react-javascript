@@ -10,6 +10,9 @@ function Home() {
         <li class="list-group-item list-group-item-primary">
           <Link to="/fibonacci">Fibonacci</Link>
         </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/multiplicationtable">Multiplication</Link>
+        </li>
         <li class="list-group-item list-group-item-warning">
           <Link to="/strings">Strings</Link>
         </li>
