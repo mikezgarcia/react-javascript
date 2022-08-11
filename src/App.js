@@ -6,6 +6,8 @@ import Fibonacci from "./pages/Fibonacci";
 import Strings from "./pages/Strings";
 import PrimeNumbers from "./pages/PrimeNumbers";
 import MultiplicationTable from "./pages/MultiplicationTable";
+import SumofNaturalNumber from "./pages/SumofNaturalNumber";
+import SumofDigits from "./pages/SumofDigits";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/strings" element={<Strings />} />
         <Route path="/prime-numbers" element={<PrimeNumbers />} />
         <Route path="/multiplicationtable" element={<MultiplicationTable />} />
+        <Route path="/sumofnatural" element={<SumofNaturalNumber />} />
+        <Route path="/sumofdigits" element={<SumofDigits />} />
       </Routes>
     </BrowserRouter>
   );

@@ -13,6 +13,12 @@ function Home() {
         <li class="list-group-item list-group-item-primary">
           <Link to="/multiplicationtable">Multiplication</Link>
         </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/sumofnatural">Sum of Numbers</Link>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/sumofdigits">Sum of All Digits</Link>
+        </li>
         <li class="list-group-item list-group-item-warning">
           <Link to="/strings">Strings</Link>
         </li>
