@@ -6,12 +6,10 @@ function SumofDigits() {
 
   let total = 0;
   const getSumofDigits = () => {
-    input.split("").map((data) => {
-      if (!isNaN(data)) {
-        total = total + parseInt(data);
+    input.split("").forEach((character) => {
+      if (!isNaN(character)) {
+        total = total + parseInt(character);
       }
-
-      return total;
     });
     return total;
   };

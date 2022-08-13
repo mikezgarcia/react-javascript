@@ -6,7 +6,27 @@ function Home() {
     <div className="container p-5">
       <ol class="list-group">
         <li class="list-group-item">Click the title to navigate to the page</li>
-
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/numberisotriangle">Number Iso Triangle</Link>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/countvowels">Count Vowels</Link>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/getlargest">Get Largest Input</Link>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/numbertriangle">Render a Numbers Triangle</Link>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/isotriangle">Render a Isosiles Triangle</Link>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/trianglerendered">Render a Right Triangle</Link>
+        </li>
+        <li class="list-group-item list-group-item-primary">
+          <Link to="/numberwithin">Check Number with Range</Link>
+        </li>
         <li class="list-group-item list-group-item-primary">
           <Link to="/fibonacci">Fibonacci</Link>
         </li>

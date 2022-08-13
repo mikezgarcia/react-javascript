@@ -1,22 +1,18 @@
 import React from "react";
 import { useState } from "react";
 
-function SumofNaturalNumber() {
+function CountVowels() {
   const [input, setInput] = useState("");
 
-  const getSumofNaturalNumber = () => {
-    // Check if letter or null
-    if (isNaN(input) || !input) {
-      return "Please enter a number";
-    }
-
-    let sum = 0;
-    for (let i = 1; i <= input; i++) {
-      sum = sum + i;
-    }
-    return sum;
+  let total = 0;
+  const getCountVowels = () => {
+    input.split("").forEach((character) => {
+      if (character.toLocaleLowerCase().match(/[aeiou]/)) {
+        total = total + 1;
+      }
+    });
+    return total;
   };
-
   return (
     <div className="container p-5">
       <div className="row">
@@ -37,7 +33,7 @@ function SumofNaturalNumber() {
             rows="10"
             readOnly={true}
             placeholder="Output"
-            value={getSumofNaturalNumber()}
+            value={getCountVowels()}
           />
         </div>
       </div>
@@ -45,4 +41,4 @@ function SumofNaturalNumber() {
   );
 }
 
-export default SumofNaturalNumber;
+export default CountVowels;

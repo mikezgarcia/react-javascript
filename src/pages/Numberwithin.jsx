@@ -1,22 +1,23 @@
 import React from "react";
 import { useState } from "react";
 
-function SumofNaturalNumber() {
+function Numberwithin() {
   const [input, setInput] = useState("");
 
-  const getSumofNaturalNumber = () => {
-    // Check if letter or null
+  let value = "false";
+  const getNumberwithin = () => {
+    //check if Number
     if (isNaN(input) || !input) {
-      return "Please enter a number";
+      return "Please Enter a Number!";
     }
+    //Check Range
+    else if (parseInt(input) >= 100 && parseInt(input) <= 500) {
+      value = "true";
+    }
+    return value;
 
-    let sum = 0;
-    for (let i = 1; i <= input; i++) {
-      sum = sum + i;
-    }
-    return sum;
+    // return `${parseInt(input) >= 100 && parseInt(input) <= 500}`;
   };
-
   return (
     <div className="container p-5">
       <div className="row">
@@ -37,7 +38,7 @@ function SumofNaturalNumber() {
             rows="10"
             readOnly={true}
             placeholder="Output"
-            value={getSumofNaturalNumber()}
+            value={getNumberwithin()}
           />
         </div>
       </div>
@@ -45,4 +46,4 @@ function SumofNaturalNumber() {
   );
 }
 
-export default SumofNaturalNumber;
+export default Numberwithin;
