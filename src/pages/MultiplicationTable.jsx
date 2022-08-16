@@ -1,46 +1,42 @@
 import React from "react";
 import { useState } from "react";
 
-function MultiplicationTable() {
+export default function MultiplicationTable() {
   const [input, setInput] = useState("");
-  const result = [];
 
-  const getMultiplicationTable = () => {
-    // Check if letter or null
-    if (isNaN(input) || !input) {
-      return "Please enter a number";
+  const getTable = () => {
+    const generatedTable = [];
+    var number = 0;
+    for (let i = 1; i <= input; i++) {
+      number = parseInt(input * i);
+      generatedTable.push(number);
     }
-    for (let i = 1; i < 10; i++) {
-      result.push(input * i);
-    }
-    return result.map((data) => data);
+
+    return generatedTable.map((data, index) => (
+      <div className="d-flex flex-row text-primary ">
+        <div className="p-2 w-25">{input}</div>
+        <div className="p-2 w-25">x</div>
+        <div className="p-2 w-25">{index + 1}</div>
+        <div className="p-2 w-25">=</div>
+        <div className="p-2 w-25 text-dark fw-bold">{data}</div>
+      </div>
+    ));
   };
+
   return (
-    <div className="container p-5">
-      <div className="row">
-        <div className="col-md-5">
-          <input
-            type="text"
-            className="w-100 lead"
-            placeholder="Input"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </div>
-        <div className="col-md-5">
-          <textarea
-            name="text"
-            id="text"
-            cols="30"
-            rows="10"
-            readOnly={true}
-            placeholder="Output"
-            value={getMultiplicationTable()}
-          />
-        </div>
+    <div className="container py-5 ">
+      <div className="col-12 md-5">
+        <input
+          type="text"
+          className="w-25 lead"
+          placeholder="Input"
+          value={input}
+          onChange={(inputEvent) => setInput(inputEvent.target.value)}
+        />
+      </div>
+      <div className="col-12 md-5 mb-3">
+        <h2 className="text-primary">{getTable()}</h2>
       </div>
     </div>
   );
 }
-
-export default MultiplicationTable;

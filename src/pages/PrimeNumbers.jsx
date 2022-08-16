@@ -1,66 +1,49 @@
 import React from "react";
 import { useState } from "react";
 
-function PrimeNumbers() {
-  const [input, setInput] = useState(1);
+export default function PrimeNumbers() {
+  const [input, setInput] = useState("");
 
-  const checkIfPrimeNumber = (number) => {
-    let isPrime = true;
+  const isPrime = () => {
+    var checkPrime = "Prime";
 
-    // Check if letter or null
-    if (isNaN(number) || !number) {
-      return "Please enter a number";
-    }
+    switch (!isNaN(input)) {
+      case parseInt(input) === 0:
+        return "not a prime";
 
-    // Check if less than 1
-    else if (parseInt(number) < 1) {
-      return "The number is NOT a prime number";
-    }
+      case parseInt(input) === 1:
+        return "neither prime nor composite ";
 
-    // Check if equal to 1
-    else if (parseInt(number) === 1) {
-      return "1 is neither prime nor composite number";
-    }
-
-    // Check if number is greater than 1
-    else {
-      for (let i = 2; i < parseInt(number); i++) {
-        if (parseInt(number) % i === 0) {
-          isPrime = false;
-          break;
+      case parseInt(input) > 1:
+        for (let i = 2; i < parseInt(input); i++) {
+          if (parseInt(input) % i === 0) {
+            checkPrime = "Composite";
+          }
         }
-      }
+        break;
 
-      return isPrime
-        ? `${number} is a prime number`
-        : `${number} is NOT a prime number`;
+      default:
+        return "Please input a number.";
     }
+    return checkPrime;
   };
 
   return (
-    <div className="container p-5">
-      <div className="row">
-        <div className="col-md-5">
-          <input
-            className="w-100 lead"
-            type="text"
-            placeholder="Input"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </div>
-        <div className="col-md-5">
-          <textarea
-            className="w-100 lead text-primary"
-            type="text"
-            placeholder="Output"
-            readOnly={true}
-            value={checkIfPrimeNumber(input)}
-          />
-        </div>
+    <div className="container py-5">
+      <div className="col-12 md-5">
+        <input
+          type="text"
+          className="w-25"
+          placeholder="Input"
+          value={input}
+          onChange={(inputEvent) => setInput(inputEvent.target.value)}
+        />
+      </div>
+      <div className="col-12 md-5">
+        <h2 className="text-primary">
+          The number {input} is {isPrime()} number.
+        </h2>
       </div>
     </div>
   );
 }
-
-export default PrimeNumbers;

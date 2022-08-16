@@ -1,55 +1,40 @@
 import React from "react";
 import { useState } from "react";
 
-function Isotriangle() {
-  const [number, setNumber] = useState(null);
+export default function Isotriangle() {
+  const [input, setInput] = useState("");
 
-  var initial = "*";
-  const sequence = [];
+  const generatedIsoTriangle = () => {
+    var char = "*";
+    const regularTriangle = [];
 
-  const generateTriangle = () => {
-    // Check if letter or null
-    if (isNaN(number) || !number) {
-      return <h2 className="text-primary">Please enter a number</h2>;
+    for (let i = 1; i <= input; i++) {
+      regularTriangle.push(char);
+      char = char.concat(" ", "*");
     }
 
-    // Check if negative number
-    else if (parseInt(number) <= 0) {
-      return (
-        <h2 className="text-primary">
-          Please enter a positive number greater than zero
-        </h2>
-      );
-    }
+    const invertedTriangle = regularTriangle.slice().reverse().slice(1);
+    const displayTriangle = [].concat(regularTriangle, invertedTriangle);
 
-    for (let i = 1; i <= number; i++) {
-      sequence.push(initial);
-      initial = initial.concat(" ", "*");
-    }
-    const decendingSeq = sequence.slice().reverse().slice(1);
-    const combinedSeq = [].concat(sequence, decendingSeq);
-
-    return combinedSeq.map((data) => <h2 className="text-primary">{data}</h2>);
+    return displayTriangle.map((data) => (
+      <h2 className="text-primary">{data}</h2>
+    ));
   };
 
   return (
-    <div className="container p-5">
-      <div className="row">
-        <div className="col-12">
-          <input
-            type="text"
-            className="w-50 lead"
-            placeholder="Please enter a positive number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <div className="pt-5">{generateTriangle()}</div>
-        </div>
+    <div className="container py-5">
+      <div className="col-12 md-5">
+        <input
+          type="text"
+          className="w-25"
+          value={input}
+          placeholder="Input"
+          onChange={(inputEvent) => setInput(inputEvent.target.value)}
+        />
+      </div>
+      <div className="col-12 md-5">
+        <h2 className="text-primary">{generatedIsoTriangle()}</h2>
       </div>
     </div>
   );
 }
-
-export default Isotriangle;

@@ -15,6 +15,7 @@ import NumberTriangle from "./pages/NumberTriangle";
 import GetLargestInput from "./pages/GetLargestInput";
 import CountVowels from "./pages/CountVowels";
 import NumberIso from "./pages/NumberIso";
+import NameGenerator from "./pages/NameGenerator";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/getlargest" element={<GetLargestInput />} />
         <Route path="/countvowels" element={<CountVowels />} />
         <Route path="/numberisotriangle" element={<NumberIso />} />
+        <Route path="/namegenerator" element={<NameGenerator />} />
       </Routes>
     </BrowserRouter>
   );

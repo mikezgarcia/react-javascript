@@ -1,72 +1,49 @@
 import React from "react";
 import { useState } from "react";
 
-function GetLargestInput() {
-  var [fistinput, setFirstInput] = useState("");
-  var [secondinput, setSecondInput] = useState("");
-  var [thirdtinput, setThirdInput] = useState("");
-  //   const result = [];
+export default function GetLargestInput() {
+  const [firstInput, setFirstInput] = useState("");
+  const [secondInput, setSecondInput] = useState("");
+  const [thirdInput, setThirdInput] = useState("");
 
-  const getLagestInput = () => {
-    fistinput = parseFloat(fistinput);
-    secondinput = parseFloat(secondinput);
-    thirdtinput = parseFloat(thirdtinput);
-
-    // // Check if
-    // if (fistinput > secondinput && secondinput > thirdtinput) {
-    //   return fistinput;
-    // } else if (secondinput > fistinput && secondinput > thirdtinput) {
-    //   return secondinput;
-    // } else if (thirdtinput > fistinput && thirdtinput > secondinput) {
-    //   return thirdtinput;
-    // }
-
-    return Math.max(fistinput, secondinput, thirdtinput);
+  const getHighestNumber = () => {
+    if (isNaN(firstInput, secondInput, thirdInput)) {
+      return "Please Input a Number!";
+    } else {
+      return Math.max(firstInput, secondInput, thirdInput);
+    }
   };
+
   return (
-    <div className="container p-5">
-      <div className="row">
-        <div className="col-md-5">
-          <input
-            type="text"
-            className="w-25 lead"
-            placeholder="Input"
-            value={fistinput}
-            onChange={(e) => setFirstInput(e.target.value)}
-          />
-        </div>
-        <div className="col-md-5">
-          <input
-            type="text"
-            className="w-25 lead"
-            placeholder="Input"
-            value={secondinput}
-            onChange={(e) => setSecondInput(e.target.value)}
-          />
-        </div>
-        <div className="col-md-5">
-          <input
-            type="text"
-            className="w-25 lead"
-            placeholder="Input"
-            value={thirdtinput}
-            onChange={(e) => setThirdInput(e.target.value)}
-          />
-        </div>
-        <div className="col-md-5">
-          <textarea
-            name="text"
-            id="text"
-            cols="30"
-            rows="10"
-            readOnly={true}
-            placeholder="Output"
-            value={getLagestInput()}
-          />
-        </div>
+    <div className="container py-5">
+      <div className="col-12 md-5">
+        <input
+          type="text"
+          className="firstInput w-25 lead"
+          placeholder="First Input"
+          value={firstInput}
+          onChange={(e) => setFirstInput(e.target.value)}
+        />
+        <input
+          type="text"
+          className="firstInput w-25 lead"
+          placeholder="First Input"
+          value={secondInput}
+          onChange={(e) => setSecondInput(e.target.value)}
+        />
+        <input
+          type="text"
+          className="firstInput w-25 lead"
+          placeholder="First Input"
+          value={thirdInput}
+          onChange={(e) => setThirdInput(e.target.value)}
+        />
+      </div>
+      <div className="col-12 md-5">
+        <h2 className="text-primary lead fw-bold">
+          The Largest Number from all of them is: {getHighestNumber()}
+        </h2>
       </div>
     </div>
   );
 }
-
-export default GetLargestInput;

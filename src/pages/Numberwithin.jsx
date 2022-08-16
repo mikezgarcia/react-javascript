@@ -1,49 +1,31 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
-function Numberwithin() {
+export default function Numberwithin() {
   const [input, setInput] = useState("");
 
-  let value = "false";
-  const getNumberwithin = () => {
-    //check if Number
-    if (isNaN(input) || !input) {
-      return "Please Enter a Number!";
+  const isWithinRange = () => {
+    var numRange = "false";
+    if (isNaN(input)) {
+      return "Please Input a Number!";
+    } else if (parseInt(input) >= 100 && parseInt(input) <= 500) {
+      numRange = "true";
     }
-    //Check Range
-    else if (parseInt(input) >= 100 && parseInt(input) <= 500) {
-      value = "true";
-    }
-    return value;
 
-    // return `${parseInt(input) >= 100 && parseInt(input) <= 500}`;
+    return numRange;
   };
   return (
-    <div className="container p-5">
-      <div className="row">
-        <div className="col-md-5">
-          <input
-            type="text"
-            className="w-100 lead"
-            placeholder="Input"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        </div>
-        <div className="col-md-5">
-          <textarea
-            name="text"
-            id="text"
-            cols="30"
-            rows="10"
-            readOnly={true}
-            placeholder="Output"
-            value={getNumberwithin()}
-          />
-        </div>
+    <div className="container py-5">
+      <div className="col-12 md-5">
+        <input
+          type="text"
+          className="w-25"
+          placeholder="Input"
+          onChange={(inputEvent) => setInput(inputEvent.target.value)}
+        />
+      </div>
+      <div className="col-12 md-5">
+        <h2 className="text-primary">{isWithinRange()}</h2>
       </div>
     </div>
   );
 }
-
-export default Numberwithin;

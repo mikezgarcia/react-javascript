@@ -1,61 +1,33 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
-function Trianglerendered() {
-  const [number, setNumber] = useState(null);
+export default function Trianglerendered() {
+  const [input, setInput] = useState("");
 
-  var initial = "*";
-  const sequence = [];
+  const generateTriangle = () => {
+    let displayChar = "*";
+    const outputArray = [];
 
-  const generateFibonacci = () => {
-    // Check if letter or null
-    if (isNaN(number) || !number) {
-      return <h2 className="text-primary">Please enter a number</h2>;
+    for (let i = 1; i <= input; i++) {
+      outputArray.push(displayChar);
+      displayChar = displayChar.concat(" ", "*");
     }
-
-    // Check if negative number
-    else if (parseInt(number) <= 0) {
-      return (
-        <h2 className="text-primary">
-          Please enter a positive number greater than zero
-        </h2>
-      );
-    }
-
-    // // First 2 scenarios
-    // else if (number === 1) {
-    //   return <h2 className="text-primary">{initial}</h2>;
-    // } else if (number === 2) {
-    //   return <h2 className="text-primary">{initial.concat(" ", "*")}</h2>;
-    // }
-
-    // Third scenario
-    for (var i = 1; i <= number; i++) {
-      sequence.push(initial);
-      initial = initial.concat(" ", "*");
-    }
-
-    return sequence.map((data) => <h2 className="text-primary">{data}</h2>);
+    return outputArray.map((data) => <h2 className="text-primary">{data}</h2>);
   };
 
   return (
     <div className="container p-5">
-      <div className="row">
-        <div className="col-12">
-          <input
-            type="text"
-            className="w-50 lead"
-            placeholder="Please enter a positive number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <div className="pt-5">{generateFibonacci()}</div>
-        </div>
+      <div className="col-12 md-5">
+        <input
+          type="text"
+          className="w-25 lead"
+          placeholder="Input"
+          value={input}
+          onChange={(inputEvent) => setInput(inputEvent.target.value)}
+        />
+      </div>
+      <div className="col-12 md-5">
+        <h2 className="text-primary">{generateTriangle()}</h2>
       </div>
     </div>
   );
 }
-
-export default Trianglerendered;

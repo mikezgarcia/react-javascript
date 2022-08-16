@@ -1,66 +1,51 @@
 import React from "react";
 import { useState } from "react";
 
-function Fibonacci() {
-  const [number, setNumber] = useState(null);
-  var first = 0;
-  var second = 1;
-  const sequence = [];
+export default function Fibonacci() {
+  const [input, setInput] = useState("");
 
-  const generateFibonacci = () => {
-    // Check if letter or null
-    if (isNaN(number) || !number) {
-      return <h2 className="text-primary">Please enter a number</h2>;
+  const getFibonacci = () => {
+    let fib = [0, 1];
+    let allfib = [];
+
+    if (isNaN(input) || parseInt(input) < 1) {
+      return "Please Input a Number or Greater than 1.";
+    } else if (parseInt(input) === 1) {
+      allfib.push(fib[0]);
+    } else if (parseInt(input) === 2) {
+      allfib = fib;
+    } else {
+      allfib = [0, 1];
+      for (let i = 2; i <= input; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+        // fib[2]= fib[2-1] + fib[2-2]
+        // fib[2] = fib[1] + fib[0]
+        // fib[2] = 1 + 0
+        // fib[2] = 1     || 3rd entry
+
+        allfib.push(" ", fib[i]);
+      }
+      // Remove the last data on array, since 0 or index 0 is counted as 1st entry
+      allfib.pop();
     }
-    // First 2 scenarios
-    else if (number === 1) {
-      return <h2 className="text-primary">0</h2>;
-    } else if (number === 2) {
-      return [0, 1].map((data, index) => (
-        <h2 className="text-primary" key={index}>
-          {data}
-        </h2>
-      ));
-    }
-
-    // Third scenario
-    for (var i = 1; i <= number; i++) {
-      sequence.push(first);
-
-      var nextTerm = first + second;
-      first = second;
-      second = nextTerm;
-    }
-
-    return sequence.map((data, index) => (
-      <h2 className="text-primary" key={index}>
-        {data}
-      </h2>
+    return allfib.map((data) => (
+      <h2 className="text-primary">{data.toLocaleString("en-US")}</h2>
     ));
   };
 
   return (
-    <div className="container p-5">
-      <div className="row">
-        <div className="col-12">
-          <input
-            type="text"
-            className="w-50 lead"
-            placeholder="Please enter a positive number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-          />
-        </div>
-        <div className="col-12">
-          <div className="pt-5">
-            <h1>Enter the number of terms: {number}</h1>
-            <h2>Fibonacci Series: </h2>
-            {generateFibonacci()}
-          </div>
-        </div>
+    <div className="container py-5">
+      <div className="col-12 md-5">
+        <input
+          type="text"
+          className="w-25"
+          placeholder="Input"
+          onChange={(inputEvent) => setInput(inputEvent.target.value)}
+        />
+      </div>
+      <div className="col-12 md-5">
+        <h2 className="text-primary">{getFibonacci()}</h2>
       </div>
     </div>
   );
 }
-
-export default Fibonacci;
